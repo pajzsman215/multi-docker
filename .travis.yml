@@ -14,3 +14,10 @@ services:
     - docker build -t jozsi/multi-nginx /nginx
     - docker build -t jozsi/multi-server /server
     - docker build -t jozsi/multi-worker /worker
+    # log in to the docker CLI
+    - echo "$DOSKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # push images to docker hub
+    - docker push jozsi/multi-client
+    - docker push jozsi/multi-nginx
+    - docker push jozsi/multi-server
+    - docker push jozsi/multi-worker
